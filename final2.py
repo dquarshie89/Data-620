@@ -1,0 +1,20 @@
+import pandas as pd
+#Import TfIdfVectorizer from scikit-learn
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+
+url = pd.read_csv('https://raw.githubusercontent.com/dquarshie89/Data-620/master/movie_plots.csv')
+
+
+df = url.sample(5000)
+#Define a TF-IDF Vectorizer Object. Remove all english stop words such as 'the', 'a'
+tfidf = TfidfVectorizer(stop_words='english')
+
+#Replace NaN with an empty string
+df['Plot'] = df['Plot'].fillna('')
+
+#Construct the required TF-IDF matrix by fitting and transforming the data
+tfidf_matrix = tfidf.fit_transform(df['Plot'])
+
+#Output the shape of tfidf_matrix
+tfidf_matrix.shape
