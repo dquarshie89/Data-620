@@ -78,4 +78,4 @@ def get_recommendations_title(title, cosine_sim=cosine_sim):
     # Return the top 10 most similar movies
     return df['Title'].iloc[title_movie_indices]
 
-get_recommendations_title('Baby Mama')
+get_recommendations_title('The Amazing Spider-Man 2')
